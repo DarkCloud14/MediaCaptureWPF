@@ -27,6 +27,8 @@ REM Build
 if %ERRORLEVEL% NEQ 0 goto eof
 %BUILD% .\pack.sln /maxcpucount /target:build /nologo /p:Configuration=Release /p:Platform=x64
 if %ERRORLEVEL% NEQ 0 goto eof
+%BUILD% .\pack.sln /maxcpucount /target:build /nologo /p:Configuration=Release /p:Platform="Any CPU"
+if %ERRORLEVEL% NEQ 0 goto eof
 
 REM Pack
 %OUTPUT%nuget.exe pack MMaitre.MediaCaptureWPF.nuspec -OutputDirectory %OUTPUT%Packages -Prop NuGetVersion=%VERSION% -NoPackageAnalysis
