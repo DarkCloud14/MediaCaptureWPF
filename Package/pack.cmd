@@ -1,7 +1,7 @@
 @echo off
 setlocal enableextensions
 
-set VERSION=1.1.0
+set VERSION=1.1.1
 
 if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" (
     set BUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe"
