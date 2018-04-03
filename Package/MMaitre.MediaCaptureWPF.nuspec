@@ -17,6 +17,8 @@
   <files>
 
     <!-- implementation -->
+    <file src="..\MediaCaptureWPF\bin\Release\MediaCaptureWPF.dll" target="build\net451\AnyCPU\" />
+    <file src="..\MediaCaptureWPF\bin\Release\MediaCaptureWPF.Native.dll" target="build\net451\AnyCPU\" />
     <file src="..\MediaCaptureWPF\bin\x86\Release\MediaCaptureWPF.dll" target="build\net451\x86\" />
     <file src="..\MediaCaptureWPF\bin\x86\Release\MediaCaptureWPF.Native.dll" target="build\net451\x86\" />
     <file src="..\MediaCaptureWPF\bin\x64\Release\MediaCaptureWPF.dll" target="build\net451\x64\" />
