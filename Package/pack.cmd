@@ -3,11 +3,8 @@ setlocal enableextensions
 
 set VERSION=1.1.0
 
-if exist "%ProgramFiles%\MSBuild\12.0\Bin\msbuild.exe" (
-    set BUILD="%ProgramFiles%\MSBuild\12.0\Bin\msbuild.exe"
-)
-if exist "%ProgramFiles(x86)%\MSBuild\12.0\Bin\msbuild.exe" (
-    set BUILD="%ProgramFiles(x86)%\MSBuild\12.0\Bin\msbuild.exe"
+if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" (
+    set BUILD="%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe"
 )
 
 if exist "%ProgramFiles%\Git\cmd\git.exe" (
