@@ -31,6 +31,8 @@ namespace CaptureTestApp
             var preview = new CapturePreview(capture);
             Preview.Source = preview;
             await preview.StartAsync();
-        }
+
+            var preview2 = new CapturePreview(capture);
+    }
     }
 }

@@ -69,9 +69,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
@@ -165,4 +167,8 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <Target Name="AfterBuild">
+    <MSBuild Condition=" '$(Platform)' == 'x64' and $(AutomatedBuildThroughAfterBuild) != 'true'" Projects="$(MSBuildProjectFile)" Properties="Platform=Win32;PlatFormTarget=x86;AutomatedBuildThroughAfterBuild=true" RunEachTargetSeparately="true" />
+    <MSBuild Condition=" '$(Platform)' == 'Win32' and $(AutomatedBuildThroughAfterBuild) != 'true'" Projects="$(MSBuildProjectFile)" Properties="Platform=x64;PlatFormTarget=x64;AutomatedBuildThroughAfterBuild=true" RunEachTargetSeparately="true" />
+  </Target>
 </Project>
