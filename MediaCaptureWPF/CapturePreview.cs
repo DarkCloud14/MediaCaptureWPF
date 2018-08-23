@@ -28,7 +28,7 @@ namespace MediaCaptureWPF
       // We only do this if the assembly wasn't loaded yet.
       if (mediaCaptureAssembly == null)
       {
-        var tempAssemblyFile = Path.Combine(Path.GetTempPath(), "MediaCaptureWPFNativeFiles", Environment.Is64BitProcess ? "x64" : "x86", mediaCaptureWpfNativeAssemblyDllName);
+        var tempAssemblyFile = Path.Combine(Path.GetTempPath(), Assembly.GetExecutingAssembly().GetName().Name, Environment.Is64BitProcess ? "x64" : "x86", Assembly.GetExecutingAssembly().GetName().Version.ToString(), mediaCaptureWpfNativeAssemblyDllName);
         var rawBytesOfTempAssemblyFile = new byte[1];
 
         if (File.Exists(tempAssemblyFile))
@@ -46,13 +46,7 @@ namespace MediaCaptureWPF
         // If the files are not equal try to overwrite the file. If it doesn't work (file could be locked) the existing assembly is loaded.
         if (!StructuralComparisons.StructuralEqualityComparer.Equals(rawBytesOfTempAssemblyFile, Environment.Is64BitProcess ? Resources.MediaCaptureWPFNative_x64 : Resources.MediaCaptureWPFNative_x86))
         {
-          try
-          {
-            File.WriteAllBytes(tempAssemblyFile, Environment.Is64BitProcess ? Resources.MediaCaptureWPFNative_x64 : Resources.MediaCaptureWPFNative_x86);
-          }
-          catch (Exception ex)
-          {
-          }
+          File.WriteAllBytes(tempAssemblyFile, Environment.Is64BitProcess ? Resources.MediaCaptureWPFNative_x64 : Resources.MediaCaptureWPFNative_x86);
         }
 
         mediaCaptureAssembly = Assembly.LoadFile(tempAssemblyFile);
